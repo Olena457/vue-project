@@ -8,10 +8,11 @@ import BaseLayout from '@/BaseLayout/BaseLayout.vue'
       <img class="inline mb-6" src="../assets/image/map-pin.svg" alt="pin" />
       <h1 class="font-bold text-4xl mb-7">IT traveler</h1>
       <p class="leading-6 mb-11">
-        Простий, зручний веб додаток, який дозволить тобі відмічати твої улюблені місця, також ті, в
-        яких би ти дуже хотів побувати. Тож не зволікай, спробуй сам.
+        A simple and convenient web application that lets you mark your favorite places - and also
+        the ones you dream of visiting someday. So don't wait - give it a try and start exploring
+        your world!
       </p>
-      <IButton to="">Почати роботу</IButton>
+      <IButton to="">Get Started</IButton>
     </div>
   </BaseLayout>
 </template>
