@@ -1,0 +1,27 @@
+<script setup>
+import { reactive } from 'vue'
+import IInput from '@/components/IInput/IInput.vue'
+import IButton from '@/components/IButton/IButton.vue'
+
+const props = defineProps({
+  isLoading: {
+    default: false,
+    type: Boolean,
+  },
+})
+const emit = defineEmits(['submit'])
+const userData = reactive({
+  email: '',
+  password: '',
+})
+</script>
+
+<template>
+  <form @submit.prevent="emit('submit', userData)">
+    <IInput class="mb-4" label="Email" v-model="userData.email" />
+    <IInput class="mb-4" label="Password" v-model="userData.password" />
+    <IButton class="mt-10 w-full" variant="gradient" type="submit" :is-loading="props.isLoading">
+      Sing in
+    </IButton>
+  </form>
+</template>
