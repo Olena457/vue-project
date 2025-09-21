@@ -1,6 +1,6 @@
 <script setup>
 import IButton from '@/components/IButton/IButton.vue'
-import BaseLayout from '@/BaseLayout/BaseLayout.vue'
+import BaseLayout from '@/Layout/BaseLayout.vue'
 </script>
 <template>
   <BaseLayout>

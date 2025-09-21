@@ -1,6 +1,8 @@
 # .
 
-This template should help get you started developing with Vue 3 in Vite.
+# YOUR FAVORITE PLACES
+
+## _This app provides the ability to create your own favorite place marker on the map_
 
 ## Recommended IDE Setup
 
