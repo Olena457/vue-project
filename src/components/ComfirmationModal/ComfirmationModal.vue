@@ -19,6 +19,7 @@ defineProps({
 })
 const emit = defineEmits(['close', 'confirm'])
 </script>
+
 <template>
   <IModal v-if="isOpen" @close="emit('cansel')">
     <div class="mb-4 tex-lg">{{ title }}</div>
@@ -29,4 +30,3 @@ const emit = defineEmits(['close', 'confirm'])
     <div v-if="hasError" class="mt-4 text-red-500">Something went wrong.Please try again.</div>
   </IModal>
 </template>
->
