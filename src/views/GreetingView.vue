@@ -12,7 +12,7 @@ import BaseLayout from '@/Layout/BaseLayout.vue'
         the ones you dream of visiting someday. So don't wait - give it a try and start exploring
         your world!
       </p>
-      <IButton to="">Get Started</IButton>
+      <IButton to="/auth/registration">Get Started</IButton>
     </div>
   </BaseLayout>
 </template>
