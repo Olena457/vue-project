@@ -8,7 +8,7 @@ export const registerUser = (body) => {
   return clientFetch.post('/user/register', body)
 }
 
-export const logout = () => {
+export const logoutUser = () => {
   return clientFetch.get('/user/logout')
 }
 
