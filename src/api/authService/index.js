@@ -1,9 +1,6 @@
-// src/composables/useAuthService.js
-
 import { ref } from 'vue'
 import { clientFetch } from '../clientFetch'
 import { router } from '../../router'
-
 import {
   login as loginUser,
   registerUser as registerUserApi,
