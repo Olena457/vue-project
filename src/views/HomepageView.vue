@@ -1,4 +1,4 @@
-<!-- <script setup>
+<script setup>
 import { computed, onMounted, ref } from 'vue'
 import { useMutation } from '@/composables/useMutation.js'
 import { useModal } from '@/composables/useModal.js'
@@ -8,9 +8,9 @@ import MarkerIcon from '@/components/icons/MarkerIcon.vue'
 import CreateNewPlaceModal from '@/components/CreateNewPlaceModal.vue/CreateNewPlaceModal.vue'
 import UserInfo from '@/components/UserInfo/UserInfo.vue'
 import LogoutButton from '@/components/LogouButton/LogoutButton.vue'
-import {mapsettings}from '@/map/settings.js'
+import { mapSettings } from '@/map/settings.js'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import{MapboxMap, MaxboxMarker} from '@studiometa/vue-mapbox-gl'
+import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl'
 
 const activeId = ref(null)
 const map = ref(null)
@@ -89,34 +89,30 @@ onMounted(() => {
       />
     </div>
     <div class="w-full h-full flex item-center justify-center text-6xl">
-      <MarkerIcon v-if="mapMarkerLngLat" class="text-red-600 animate-bounce" />
-       <MapboxMap
-
+      <MapboxMap
         class="w-full h-full"
-        :center="[30.523433, 50.450003]"
+        :center="[30.523333, 50.450001]"
         :zoom="10"
-        :access-token="mapSettings.style"
+        :access-token="mapSettings.apiToken"
+        :map-style="mapSettings.style"
         @mb-click="handleMapClick"
-        @mb-created="(mapInstance)=> (map = mapInstance)"
+        @mb-created="(mapInstance) => (map = mapInstance)"
       >
-        <MapboxMarker
-          v-if="mapMarkerLngLat"
-          :LngLat="mapMarkerLngLat" anchor="bottom"
-         <MarkerIcon class="h-8 w-8" is-active />
+        <MapboxMarker v-if="mapMarkerLngLat" :LngLat="mapMarkerLngLat" anchor="bottom">
+          <MarkerIcon class="h-8 w-8" is-active />
         </MapboxMarker>
 
         <MapboxMarker
           v-for="place in favoritePlaces"
           :key="place.id"
           :lngLat="place.coordinates"
-          @click="changeActiveId(place.id)"
           anchor="bottom"
         >
-        <button @click.stop="changeActiveId(place.id)">
-          <MarkerIcon class="h-8 w-8" />
-        </button>
+          <button @click.stop="changeActiveId(place.id)">
+            <MarkerIcon class="h-8 w-8" />
+          </button>
         </MapboxMarker>
       </MapboxMap>
     </div>
   </main>
-</template> -->
+</template>
