@@ -7,7 +7,7 @@ import BaseLayout from '@/Layout/BaseLayout.vue'
     <section class="w-full bg-white p-10 rounded-2xl">
       <div class="flex justify-center gap-10 mb-10">
         <router-link
-          to="registration"
+          to="register"
           class="text-gray"
           exact-active-class="text-[var(--text-primary)]"
         >

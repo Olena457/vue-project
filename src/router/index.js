@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { authService } from '../api/authService/index.js'
+import { useAuthService } from '../api/authService/index.js'
 
 const GreetingPage = () => import('../views/GreetingView.vue')
 const Homepage = () => import('../views/HomepageView.vue')
 const AuthPage = () => import('../views/AuthView.vue')
-const LoginPage = () => import('../views/LoginView.vue')
 const RegistrationPage = () => import('../views/RegistrationView.vue')
+const LoginPage = () => import('../views/LoginView.vue')
 
 const routes = [
   { path: '/', component: GreetingPage, name: 'greeting' },
@@ -15,8 +15,8 @@ const routes = [
     component: AuthPage,
     redirect: '/auth/login',
     children: [
-      { path: '/login', component: LoginPage, name: 'login' },
-      { path: '/register', component: RegistrationPage, name: 'register' },
+      { path: 'login', component: LoginPage, name: 'login' },
+      { path: 'register', component: RegistrationPage, name: 'register' },
     ],
   },
 ]
@@ -27,15 +27,22 @@ export const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const authRoutes = ['login', 'registration']
+  const { isLoggedIn } = useAuthService()
 
-  const { name } = to
+  const publicRoutes = ['login', 'register', 'greeting']
+  const protectedRoutes = ['homepage', 'map']
 
-  if (authService.isLoggedIn() && authRoutes.includes(name)) {
-    next({ name: 'homepage' })
-  } else if (!authRoutes.includes(name) && !authService.isLoggedIn()) {
-    next({ name: 'login' })
+  if (isLoggedIn()) {
+    if (publicRoutes.includes(to.name)) {
+      next({ name: 'homepage' })
+    } else {
+      next()
+    }
   } else {
-    next()
+    if (protectedRoutes.includes(to.name)) {
+      next({ name: 'login' })
+    } else {
+      next()
+    }
   }
 })
