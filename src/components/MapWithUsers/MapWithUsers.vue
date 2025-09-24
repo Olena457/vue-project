@@ -15,9 +15,9 @@
       <MarkerIcon class="w-6 h-6 -mt-2.5" />
     </div>
 
-    <div class="absolute top-[62%] left-[55%] flex flex-col items-center">
+    <div class="absolute top-[62%] left-[60%] flex flex-col gap-15 items-center">
       <div
-        class="w-20 h-20 rounded-full bg-green-300 bg-opacity-70 flex items-center justify-center"
+        class="w-17 h-17 rounded-full bg-green-300 bg-opacity-70 flex items-center justify-center"
       >
         <img
           src="/src/assets/image/young.png"
@@ -28,9 +28,9 @@
       <MarkerIcon class="w-8 h-8 -mt-2.5" />
     </div>
 
-    <div class="absolute top-[40%] left-[40%] flex gap-8 flex-row-reverse items-center">
+    <div class="absolute top-[40%] left-[35%] flex gap-8 flex-row-reverse items-center">
       <div
-        class="w-16 h-16 rounded-full bg-fuchsia-300 bg-opacity-70 flex items-center justify-center"
+        class="w-20 h-20 rounded-full bg-fuchsia-300 bg-opacity-70 flex items-center justify-center"
       >
         <img
           src="/src/assets/image/woman.png"
