@@ -14,7 +14,12 @@ const {
   onSuccess: () => router.replace('/map'),
 })
 </script>
+
 <template>
-  <RegistrationForm @submit="handleRegisterUser" :is-loading="isLoading" />
+  <RegistrationForm
+    class="flex flex-col gap-4"
+    @submit="handleRegisterUser"
+    :is-loading="isLoading"
+  />
   <div v-if="error" class="text-red-500">{{ error.message }}</div>
 </template>

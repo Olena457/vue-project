@@ -46,11 +46,21 @@
     .primary {
       background-color: #f3743d;
     }
-    .text-gray {
+    .text-gray-bg {
       background-color: #939393;
+    }
+    .text-gray {
+      color: #939393;
+    }
+    .text-white {
+      color: #f8f8f8;
     }
     .text-black {
       background-color: #2c2c2c;
+    }
+    .auth-form {
+      display: flex;
+      flex-direction: column;
     }
   }
 }

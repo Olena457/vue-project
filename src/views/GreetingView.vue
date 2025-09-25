@@ -1,7 +1,9 @@
 <script setup>
 import IButton from '@/components/IButton/IButton.vue'
 import BaseLayout from '@/Layout/BaseLayout.vue'
+import { RouterLink } from 'vue-router'
 </script>
+
 <template>
   <BaseLayout>
     <div class="text-center flex flex-col gap-10">
@@ -15,6 +17,23 @@ import BaseLayout from '@/Layout/BaseLayout.vue'
         </p>
         <IButton to="/auth/register">Get Started</IButton>
       </div>
+      <p class="text-white pt-10">
+        You don't have an account yet?
+
+        <RouterLink
+          to="/auth/register"
+          class="font-bold border-b border-solid border-white text-white hover:border-[#939393] transition-colors duration-300"
+        >
+          Register </RouterLink
+        >,
+
+        <RouterLink
+          to="/auth/login"
+          class="font-bold border-b border-solid border-white text-white hover:border-[#939393] transition-colors duration-300"
+        >
+          Login
+        </RouterLink>
+      </p>
     </div>
   </BaseLayout>
 </template>

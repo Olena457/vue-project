@@ -18,11 +18,11 @@ const userData = reactive({
 </script>
 
 <template>
-  <form @submit.prevent="emit('submsit', toRaw(userData))">
-    <IInput class="mb-4" label="Full name" v-model="userData.name" />
-    <IInput class="mb-4" label="Email" placeholder="email@gmail.com" v-model="userData.email" />
-    <IInput class="mb-4" label="Password" type="password" v-model="userData.name" />
-    <IButton class="mt-10 w-full" variant="gradient" type="submit" :is-loading="props.isLoading">
+  <form @submit.prevent="emit('submit', toRaw(userData))">
+    <IInput class="mb-12" label="Full name" v-model="userData.name" />
+    <IInput class="mb-12" label="Email" placeholder="email@gmail.com" v-model="userData.email" />
+    <IInput class="mb-12" label="Password" type="password" v-model="userData.password" />
+    <IButton class="mt-12 w-full" variant="gradient" type="submit" :is-loading="props.isLoading">
       Create account
     </IButton>
   </form>
