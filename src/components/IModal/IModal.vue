@@ -13,10 +13,10 @@ onUnmounted(() => {
 <template>
   <component :is="Teleport" to="body">
     <div
-      class="flex w-full h-full fixed top-0 left-0 overflow-auto bg-[rgba(0,0,0,0.3)]"
+      class="flex w-full h-full fixed top-0 left-0 overflow-auto bg-[rgba(0,0,0,0.3)] items-center justify-center"
       @click.self="emit('close')"
     >
-      <div class="relative bg-white min-w-[350px] m-auto text-black rounded-2xl p-10">
+      <div class="relative bg-white min-w-[350px] m-auto text-[#2C2C2C] rounded-2xl p-10">
         <button class="absolute right-3 top-3">
           <CrossIcon class="w-6 h-6" @click="emit('close')" />
         </button>

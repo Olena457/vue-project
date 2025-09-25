@@ -1,13 +1,12 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useMutation } from '@/composables/useMutation.js'
-
 import EditPlaceModal from '../EditPlaceModal/EditPlaceModal.vue'
 import FavoritePlace from '../FavoritePlace/FavoritePlace.vue'
 import IButton from '@/components/IButton/IButton.vue'
 import { useModal } from '@/composables/useModal.js'
-import { deleteFavoritePlace, updateFavoritePlace } from '@/api/favorite-places.js'
-import ConfirmationModal from '@/components/ConfirmationModal/ConfirmationModal.vue'
+import { deleteFavoritePlace, updateFavoritePlace } from '@/api/favorite-places/favorite-places.js'
+import ConfirmationModal from '../ComfirmationModal/ComfirmationModal.vue'
 
 const props = defineProps({
   items: {
@@ -40,6 +39,7 @@ const { mutation: updatePlace, isLoading } = useMutation({
     emit('updated')
   },
 })
+
 const {
   mutation: deletePlace,
   isLoading: isDeleting,
@@ -52,6 +52,7 @@ const {
     emit('updated')
   },
 })
+
 const selectedId = ref(null)
 const selectedItem = computed(() => props.items.find((place) => place.id === selectedId.value))
 
@@ -74,11 +75,14 @@ const handleDeletePlace = () => {
 </script>
 
 <template>
-  <div class="px-6 text-black">
-    <div class="text-gray mb-4">Markers added</div>
+  <div class="px-6 py-8 text-[#2C2C2C] flex flex-col gap-10 align-items-start">
+    <div class="text-xs text-gray-500 mt-1">Max file size photo: **50 KB**.</div>
+    <div class="text-gray">Markers added</div>
     <slot name="label"></slot>
+
     <slot name="list">
-      <div v-if="items.length === 0 && !isPlacesLoading">Список порожній</div>
+      <div v-if="items.length === 0 && !isPlacesLoading">The list is empty</div>
+
       <FavoritePlace
         v-for="place in props.items"
         :key="place.id"
@@ -105,7 +109,7 @@ const handleDeletePlace = () => {
         :has-error="deleteError"
         @cancel="closeConfirmationModal"
         @confirm="handleDeletePlace"
-        title="Ви дійсно хочете видалити улюблене місце?"
+        title="Do you really want to delete favorite place?"
       />
     </slot>
     <slot></slot>

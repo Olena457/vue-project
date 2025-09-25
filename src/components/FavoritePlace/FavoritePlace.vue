@@ -2,7 +2,7 @@
 import { defineEmits } from 'vue'
 import FavoritePlaceIconButton from './FavoritePlaceIconButton.vue'
 import DeleteIcon from './DeleteIcon.vue'
-import EditIcon from '../icons/EditIcon.vue'
+import EditIcon from './EditIcon.vue'
 import fallbackImage from '../../assets/image/fallback-image.jpg'
 
 const props = defineProps({

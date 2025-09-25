@@ -5,7 +5,7 @@ import { useModal } from '@/composables/useModal.js'
 import { addFavoritePlace, getFavoritePlaces } from '@/api/favorite-places/favorite-places.js'
 import FavoritePlaces from '@/components/FavoritePlaces/FavoritePlaces.vue'
 import MarkerIcon from '@/components/icons/MarkerIcon.vue'
-import CreateNewPlaceModal from '@/components/CreateNewPlaceModal.vue/CreateNewPlaceModal.vue'
+import CreateNewPlaceModal from '@/components/CreateNewPlaceModal/CreateNewPlaceModal.vue'
 import UserInfo from '@/components/UserInfo/UserInfo.vue'
 import LogoutButton from '@/components/LogouButton/LogoutButton.vue'
 import { mapSettings } from '@/map/settings.js'
@@ -53,23 +53,44 @@ const changePlace = (id) => {
 const handleMapClick = ({ lngLat }) => {
   mapMarkerLngLat.value = [lngLat.lng, lngLat.lat]
 }
+//
 const handleAddPlace = async (FormData, resetForm) => {
+  // 1. COORDINATE CHECK
+  if (!mapMarkerLngLat.value) {
+    console.error('Marker coordinates are missing. Click on the map first.')
+    alert('Please click on the map first to select the marker location.')
+    return
+  }
+
+  // 2. REQUIRED FIELDS CHECK (title and description are mandatory per your API)
+  if (!FormData.title || !FormData.description) {
+    console.error('Title and description are required.')
+    alert('Please fill in both the "location" (Title) and "description" fields.')
+    return
+  }
+
+  // 3. FORM BODY CONSTRUCTION
   const body = {
     ...FormData,
     coordinates: mapMarkerLngLat.value,
   }
+
+  // 4. API REQUEST
   await addPlace(body)
   resetForm()
 }
+
 onMounted(() => {
   getPlaces()
 })
 </script>
+
 <template>
   <main class="flex h-screen">
     <div class="relative bg-white h-full w-[400px] shink-0 overflow-auto pb-10">
       <UserInfo />
       <div v-if="isPlacesLoading">Loading...</div>
+
       <FavoritePlaces
         :items="favoritePlaces"
         :active-id="activeId"
@@ -80,6 +101,7 @@ onMounted(() => {
       />
 
       <LogoutButton class="mt-10" />
+
       <CreateNewPlaceModal
         :is-open="isOpen"
         :is-loading="isAddingPlace"
@@ -98,7 +120,7 @@ onMounted(() => {
         @mb-click="handleMapClick"
         @mb-created="(mapInstance) => (map = mapInstance)"
       >
-        <MapboxMarker v-if="mapMarkerLngLat" :LngLat="mapMarkerLngLat" anchor="bottom">
+        <MapboxMarker v-if="mapMarkerLngLat" :lngLat="mapMarkerLngLat" anchor="bottom">
           <MarkerIcon class="h-8 w-8" is-active />
         </MapboxMarker>
 

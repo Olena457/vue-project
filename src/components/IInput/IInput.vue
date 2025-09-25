@@ -16,7 +16,7 @@ defineOptions({
 
 const emit = defineEmits(['update:modelValue'])
 const baseStyles =
-  'w-full text-sm rounded-[4px] border-[#eaeaea]  border-[1px] py-2 px-3 focus:outline-primary'
+  'w-full text-sm rounded-[4px] border-[#eaeaea]  border-[1px] py-2 px-3 focus:outline-[#f3743d]'
 const isTextarea = computed(() => {
   return props.type === 'textarea'
 })

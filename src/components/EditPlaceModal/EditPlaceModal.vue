@@ -1,11 +1,12 @@
 <script setup>
 import { ref, watch } from 'vue'
-import IButton from '@/components/UI/IButton.vue'
-import IModal from '@/components/UI/IModal.vue'
-import IInput from '@/components/UI/IInput.vue'
+import IButton from '@/components/IButton/IButton.vue'
+import IModal from '@/components/IModal/IModal.vue'
+import IInput from '@/components/IInput/IInput.vue'
 import InputImage from '../InputImage/InputImage.vue'
 import MarkerIcon from '../icons/MarkerIcon.vue'
-import fallbackImage from '@/assets/images/fallback-image.png'
+import fallbackImage from '../../assets/image/fallback-image.jpg'
+
 const props = defineProps({
   isOpen: {
     default: false,

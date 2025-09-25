@@ -34,14 +34,15 @@ const handleUpload = (url) => {
 }
 
 const resetForm = () => {
-  formData.description = ''
   formData.title = ''
+  formData.description = ''
   formData.img = ''
 }
 </script>
+
 <template>
   <IModal v-if="props.isOpen" @close="emit('close')">
-    <form @submit.prevent="emit('submit', formData, resetForm)">
+    <form class="flex flex-col gap-4" @submit.prevent="emit('submit', formData, resetForm)">
       <div class="flex gap-1 justify-center font-bold text-center mb-10">
         <MarkerIcon /> Add Marker
       </div>
@@ -53,7 +54,7 @@ const resetForm = () => {
       </div>
 
       <IButton class="w-full" variant="gradient" :is-loading="props.isLoading">Add</IButton>
-      <div v-if="props.hasError" class="text-red-500">Щось пішло не так</div>
+      <div v-if="props.hasError" class="text-red-500">Something went wrong</div>
     </form>
   </IModal>
 </template>

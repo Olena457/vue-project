@@ -40,6 +40,6 @@ const {
 </script>
 
 <template>
-  <LoginForm @submit="handleLogin" :is-loading="isLoading" />
+  <LoginForm class="flex flex-col gap-4" @submit="handleLogin" :is-loading="isLoading" />
   <div v-if="error" class="text-red-500">{{ error.message }}</div>
 </template>
