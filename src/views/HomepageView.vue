@@ -54,28 +54,25 @@ const handleMapClick = ({ lngLat }) => {
   mapMarkerLngLat.value = [lngLat.lng, lngLat.lat]
 }
 //
-const handleAddPlace = async (FormData, resetForm) => {
-  // 1. COORDINATE CHECK
+const handleAddPlace = async (formData, resetForm) => {
   if (!mapMarkerLngLat.value) {
     console.error('Marker coordinates are missing. Click on the map first.')
     alert('Please click on the map first to select the marker location.')
     return
   }
 
-  // 2. REQUIRED FIELDS CHECK (title and description are mandatory per your API)
-  if (!FormData.title || !FormData.description) {
+  if (!formData.title || !formData.description) {
     console.error('Title and description are required.')
     alert('Please fill in both the "location" (Title) and "description" fields.')
     return
   }
 
-  // 3. FORM BODY CONSTRUCTION
   const body = {
-    ...FormData,
+    ...formData,
     coordinates: mapMarkerLngLat.value,
   }
 
-  // 4. API REQUEST
+  //  API REQUEST
   await addPlace(body)
   resetForm()
 }
@@ -86,8 +83,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="flex h-screen">
-    <div class="relative bg-white h-full w-[400px] shink-0 overflow-auto pb-10">
+  <main class="map-sidebar">
+    <div class="relative bg-white shink-0 overflow-auto map-sidebar-panel-width pb-10">
       <UserInfo />
       <div v-if="isPlacesLoading">Loading...</div>
 

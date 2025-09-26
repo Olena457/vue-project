@@ -17,19 +17,19 @@ import { RouterLink } from 'vue-router'
         </p>
         <IButton to="/auth/register">Get Started</IButton>
       </div>
-      <p class="text-white pt-10">
+      <p class="text-white pt-10 responsive-text">
         You don't have an account yet?
 
         <RouterLink
           to="/auth/register"
-          class="font-bold border-b border-solid border-white text-white hover:border-[#939393] transition-colors duration-300"
+          class="font-bold underline text-white hover:text-[#939393] transition-colors duration-300"
         >
           Register </RouterLink
         >,
 
         <RouterLink
           to="/auth/login"
-          class="font-bold border-b border-solid border-white text-white hover:border-[#939393] transition-colors duration-300"
+          class="font-bold underline text-white hover:text-[#939393] transition-colors duration-300"
         >
           Login
         </RouterLink>

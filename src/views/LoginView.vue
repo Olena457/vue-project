@@ -81,7 +81,6 @@ const {
 } = useMutation({
   mutationFn: (data) => authService.login(data),
   onSuccess: () => {
-    // 2. Обгортаємо перенаправлення в nextTick
     nextTick(() => {
       router.replace('/map')
     })

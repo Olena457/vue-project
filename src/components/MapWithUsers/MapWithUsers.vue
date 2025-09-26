@@ -15,7 +15,7 @@
       <MarkerIcon class="w-6 h-6 -mt-2.5" />
     </div>
 
-    <div class="absolute top-[68%] left-[60%] flex flex-row gap-5 items-center">
+    <div class="absolute top-[68%] left-[60%] flex flex-row gap-3 items-center">
       <div
         class="w-20 h-20 rounded-full flex items-center justify-center bg-gradient-to-r from-[#f9b79b] to-[#F3743D] p-[4px]"
       >
@@ -53,9 +53,9 @@
       <MarkerIcon class="w-6 h-6 -mt-2" />
     </div>
 
-    <div class="absolute flex flex-col-reverse gap-5 top-[18%] left-[70%] items-center">
+    <div class="absolute flex flex-col gap-1 top-[15%] left-[70%] items-center">
       <div
-        class="w-22 h-22 rounded-full flex items-center justify-center bg-gradient-to-r from-[#f9b79b] to-[#F3743D] p-[4px]"
+        class="w-20 h-20 rounded-full flex items-center justify-center bg-gradient-to-r from-[#f9b79b] to-[#F3743D] p-[4px]"
       >
         <img
           src="/src/assets/image/man.png"
