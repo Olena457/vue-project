@@ -26,14 +26,18 @@ export const router = createRouter({
   routes,
 })
 
+const auth = useAuthService()
+
 router.beforeEach((to, from, next) => {
-  const { isLoggedIn } = useAuthService()
+  const isUserLoggedIn = auth.isLoggedIn()
 
   const publicRoutes = ['login', 'register', 'greeting']
   const protectedRoutes = ['homepage', 'map']
 
-  if (isLoggedIn()) {
-    if (publicRoutes.includes(to.name)) {
+  const isAuthPage = publicRoutes.includes(to.name) && to.name !== 'greeting'
+
+  if (isUserLoggedIn) {
+    if (isAuthPage) {
       next({ name: 'homepage' })
     } else {
       next()

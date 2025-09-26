@@ -9,7 +9,7 @@ import { RouterLink } from 'vue-router'
     <div class="text-center flex flex-col gap-10">
       <div class="text-center">
         <img class="inline pb-6" src="../assets/image/map-pin.svg" alt="pin" />
-        <h1 class="font-black text-4xl pb-7">IT traveler</h1>
+        <h1 class="font-black text-4xl pb-7">IT Traveler</h1>
         <p class="leading-6 pb-20">
           A simple and convenient web application that lets you mark your favorite places - and also
           the ones you dream of visiting someday. So don't wait - give it a try and start exploring

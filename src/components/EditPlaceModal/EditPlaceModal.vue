@@ -31,13 +31,13 @@ const formData = ref({
 watch(
   () => props.place,
   () => {
-    FormData.value = {
+    formData.value = {
       ...props.place,
     }
   },
 )
 const handleChangeImg = (url) => {
-  FormData.value.img = url
+  formData.value.img = url
 }
 </script>
 <template>
@@ -56,7 +56,7 @@ const handleChangeImg = (url) => {
               alt="place image"
             />
           </div>
-          <div class="w-7/12">
+          <div class="w-7/12 flex flex-col gap-5">
             <IInput label="location" v-model="formData.title" />
             <div class="mt-4">
               <IInput label="Description" v-model="formData.description" />
@@ -66,8 +66,11 @@ const handleChangeImg = (url) => {
             </IButton>
           </div>
         </div>
-        <InputImage class="mt-3" @uploadede="handleChangeImg">
-          <span class="text-xs">Upload new image</span>
+        <InputImage class="mt-3" @uploaded="handleChangeImg">
+          <span
+            class="text-xs text-[#2c2c2c] hover:text-[#f3743d] hover:underline transition-colors duration-300 cursor-pointer"
+            >Upload new image</span
+          >
         </InputImage>
       </form>
     </div>

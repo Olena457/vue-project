@@ -33,7 +33,7 @@ const emit = defineEmits(['edit', 'delete'])
       />
       <div class="w-full">
         <div class="flex justify-baseline items-center mb-2">
-          <h2 class="font-bold text-sm text[#2C2C2C]">{{ props.title }}</h2>
+          <h2 class="font-bold text-sm text-[#f3743d]">{{ props.title }}</h2>
           <div class="flex gap-2">
             <FavoritePlaceIconButton @click="emit('edit')">
               <EditIcon />
@@ -50,7 +50,7 @@ const emit = defineEmits(['edit', 'delete'])
     </div>
     <div
       class="h-[1px] w-full bg-[#ececec] mb-4"
-      :class="{ 'bg-primary': props.isActive, 'bg-[#ececec]': !props.isActive }"
+      :class="{ 'bg-[#f3743d]': props.isActive, 'bg-[#ececec]': !props.isActive }"
     ></div>
   </section>
 </template>

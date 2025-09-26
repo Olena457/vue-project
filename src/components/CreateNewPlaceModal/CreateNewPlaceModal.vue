@@ -50,7 +50,11 @@ const resetForm = () => {
       <IInput label="description" type="textarea" class="mb-2" v-model="formData.description" />
       <div class="flex gap-2 items-center mb-10">
         <img v-if="formData.img" :src="formData.img" alt="avatar" class="w-8 h-8 object-cover" />
-        <InputImage @uploaded="handleUpload">{{ uploadText }}</InputImage>
+        <InputImage
+          class="text-xs text-[#2c2c2c] hover:text-[#f3743d] hover:underline transition-colors duration-300 cursor-pointer"
+          @uploaded="handleUpload"
+          >{{ uploadText }}</InputImage
+        >
       </div>
 
       <IButton class="w-full" variant="gradient" :is-loading="props.isLoading">Add</IButton>

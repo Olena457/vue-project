@@ -75,8 +75,7 @@ const handleDeletePlace = () => {
 </script>
 
 <template>
-  <div class="px-6 py-8 text-[#2C2C2C] flex flex-col gap-10 align-items-start">
-    <div class="text-xs text-gray-500 mt-1">Max file size photo: **50 KB**.</div>
+  <div class="px-6 py-6 text-[#2C2C2C] flex flex-col gap-10 align-items-start">
     <div class="text-gray">Markers added</div>
     <slot name="label"></slot>
 
@@ -113,8 +112,11 @@ const handleDeletePlace = () => {
       />
     </slot>
     <slot></slot>
-    <IButton class="w-full mt-10" variant="gradient" @click="emit('create')"
+    <IButton class="w-full mt-10 cursor-pointer" variant="gradient" @click="emit('create')"
       >Add new marker</IButton
     >
+  </div>
+  <div class="flex justify-center">
+    <p class="text-center text-xs text-gray-500">Max file size photo:**55KB**</p>
   </div>
 </template>
