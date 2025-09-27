@@ -1,16 +1,17 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, defineAsyncComponent } from 'vue'
 import { useMutation } from '@/composables/useMutation.js'
-import 'mapbox-gl/dist/mapbox-gl.css'
-import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl'
-import { mapSettings } from '@/map/settings.js'
 import { useModal } from '@/composables/useModal.js'
 import { addFavoritePlace, getFavoritePlaces } from '@/api/favorite-places/favorite-places.js'
+
 import FavoritePlaces from '@/components/FavoritePlaces/FavoritePlaces.vue'
-import MarkerIcon from '@/components/icons/MarkerIcon.vue'
 import CreateNewPlaceModal from '@/components/CreateNewPlaceModal/CreateNewPlaceModal.vue'
 import UserInfo from '@/components/UserInfo/UserInfo.vue'
 import LogoutButton from '@/components/LogouButton/LogoutButton.vue'
+
+const MapboxLoader = defineAsyncComponent(
+  () => import('@/components/MapboxLoader/MapboxLoader.vue'),
+)
 
 const activeId = ref(null)
 const map = ref(null)
@@ -45,14 +46,21 @@ const changeActiveId = (id) => {
 }
 
 const changePlace = (id) => {
-  const { coordinates } = favoritePlaces.value.find((place) => place.id === id)
-  changeActiveId(id)
-  map.value.flyTo({ center: coordinates })
+  const place = favoritePlaces.value.find((place) => place.id === id)
+  if (place && map.value) {
+    changeActiveId(id)
+    map.value.flyTo({ center: place.coordinates })
+  }
 }
 
 const handleMapClick = ({ lngLat }) => {
   mapMarkerLngLat.value = [lngLat.lng, lngLat.lat]
 }
+
+const handleMapCreated = (mapInstance) => {
+  map.value = mapInstance
+}
+
 const handleAddPlace = async (formData, resetForm) => {
   if (!mapMarkerLngLat.value) {
     console.error('Marker coordinates are missing. Click on the map first.')
@@ -71,7 +79,7 @@ const handleAddPlace = async (formData, resetForm) => {
     coordinates: mapMarkerLngLat.value,
   }
 
-  //  API REQUEST
+  // API REQUEST
   await addPlace(body)
   resetForm()
 }
@@ -107,30 +115,14 @@ onMounted(() => {
       />
     </div>
     <div class="w-full h-full flex item-center justify-center text-6xl">
-      <MapboxMap
-        class="w-full h-full"
-        :center="[30.523333, 50.450001]"
-        :zoom="10"
-        :access-token="mapSettings.apiToken"
-        :map-style="mapSettings.style"
+      <MapboxLoader
+        :favorite-places="favoritePlaces"
+        :active-id="activeId"
+        :map-marker-lng-lat="mapMarkerLngLat"
+        @map-created="handleMapCreated"
         @mb-click="handleMapClick"
-        @mb-created="(mapInstance) => (map = mapInstance)"
-      >
-        <MapboxMarker v-if="mapMarkerLngLat" :lngLat="mapMarkerLngLat" anchor="bottom">
-          <MarkerIcon class="h-8 w-8" is-active />
-        </MapboxMarker>
-
-        <MapboxMarker
-          v-for="place in favoritePlaces"
-          :key="place.id"
-          :lngLat="place.coordinates"
-          anchor="bottom"
-        >
-          <button @click.stop="changeActiveId(place.id)">
-            <MarkerIcon class="h-8 w-8" />
-          </button>
-        </MapboxMarker>
-      </MapboxMap>
+        @marker-click="changeActiveId"
+      />
     </div>
   </main>
 </template>
