@@ -1,6 +1,7 @@
 <script setup>
 import MapWithUsers from '@/components/MapWithUsers/MapWithUsers.vue'
 </script>
+
 <template>
   <main class="responsive-layout">
     <section class="flex-1 flex justify-center items-center p-5 bg-[#f3743d]">

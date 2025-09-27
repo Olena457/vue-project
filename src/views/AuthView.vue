@@ -2,6 +2,7 @@
 import { RouterView, RouterLink } from 'vue-router'
 import BaseLayout from '@/Layout/BaseLayout.vue'
 </script>
+
 <template>
   <BaseLayout>
     <section class="w-full bg-white p-10 rounded-2xl">

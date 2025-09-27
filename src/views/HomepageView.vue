@@ -1,6 +1,9 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import { useMutation } from '@/composables/useMutation.js'
+import 'mapbox-gl/dist/mapbox-gl.css'
+import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl'
+import { mapSettings } from '@/map/settings.js'
 import { useModal } from '@/composables/useModal.js'
 import { addFavoritePlace, getFavoritePlaces } from '@/api/favorite-places/favorite-places.js'
 import FavoritePlaces from '@/components/FavoritePlaces/FavoritePlaces.vue'
@@ -8,9 +11,6 @@ import MarkerIcon from '@/components/icons/MarkerIcon.vue'
 import CreateNewPlaceModal from '@/components/CreateNewPlaceModal/CreateNewPlaceModal.vue'
 import UserInfo from '@/components/UserInfo/UserInfo.vue'
 import LogoutButton from '@/components/LogouButton/LogoutButton.vue'
-import { mapSettings } from '@/map/settings.js'
-import 'mapbox-gl/dist/mapbox-gl.css'
-import { MapboxMap, MapboxMarker } from '@studiometa/vue-mapbox-gl'
 
 const activeId = ref(null)
 const map = ref(null)
@@ -53,7 +53,6 @@ const changePlace = (id) => {
 const handleMapClick = ({ lngLat }) => {
   mapMarkerLngLat.value = [lngLat.lng, lngLat.lat]
 }
-//
 const handleAddPlace = async (formData, resetForm) => {
   if (!mapMarkerLngLat.value) {
     console.error('Marker coordinates are missing. Click on the map first.')

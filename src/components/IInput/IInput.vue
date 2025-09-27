@@ -43,4 +43,3 @@ const componentName = computed(() => {
     </label>
   </div>
 </template>
-<!-- @input="emit('update:modelValue', $event.target.modelValue)" -->

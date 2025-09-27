@@ -18,8 +18,7 @@
 
   body {
     min-height: 100vh;
-    color: var(--color-text);
-    background: var(--color-background);
+
     transition:
       color 0.5s,
       background-color 0.5s;
@@ -86,21 +85,7 @@
         line-height: 1.5rem;
       }
     }
-    /* .map-sidebar {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: 100vh;
-    }
 
-    @media (min-width: 768px) {
-      .map-sidebar {
-        padding: 0px;
-        flex-direction: row;
-        width: 100%;
-        max-width: none;
-      }
-    } */
     @layer {
       .map-sidebar {
         display: flex;
@@ -137,10 +122,6 @@
         width: auto;
         max-width: 90vw;
       }
-      /* @media (min-width: 768px) {
-      .edit-modal-container {
-        width: auto;
-      } */
     }
 
     .edit-modal-content {
