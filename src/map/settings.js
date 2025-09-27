@@ -1,5 +1,5 @@
-import { token } from './token.js'
+// src/map/settings.js
 export const mapSettings = {
   style: 'mapbox://styles/mapbox/streets-v12',
-  apiToken: token,
+  apiToken: import.meta.env.VITE_MAP_TOKEN,
 }
