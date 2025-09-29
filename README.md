@@ -22,6 +22,7 @@
   - Add a favorite place
   - Edit saved locations
   - Upload a small photo of the location
+  - Delete favorite place
 
 - **Mapbox Integration**:
   - Users can place a marker on the map to save a favorite spot
@@ -36,7 +37,7 @@
 
 ## 🌍 Purpose
 
-To provide travelers with a space to preserve their memories, dreams, and favorite destinations. **IT Traveler** is more than a map-it's your personal travel journal.
+To provide travelers with a space to preserve their memories, dreams, and favorite destinations. **IT Traveler** is more than a map it's your personal travel journal.
 
 ## 📦 Installation
 
