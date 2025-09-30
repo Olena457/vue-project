@@ -4,13 +4,13 @@
 
 **IT Traveler** is a personal travel companion web app designed to capture your memories, dreams, and favorite places—whether you've visited them or hope to one day. With an intuitive interface and interactive map, it helps you visualize and organize your travel story.
 
-## 🛠️ Technologies
+## Technologies
 
 - **Vue.js 3** — modern JavaScript framework
 - **Tailwind CSS 4.1** — utility-first CSS for responsive design
 - **Mapbox** — interactive map with custom marker support
 
-## 🔐 Features
+## Features
 
 - **Routing**:
   - Public routes
@@ -20,7 +20,7 @@
 - **Forms**:
   - Registration and login
   - Add a favorite place
-  - Edit saved locations
+  - Edit plase, change photo
   - Upload a small photo of the location
   - Delete favorite place
 
